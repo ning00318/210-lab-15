@@ -22,7 +22,7 @@ public:
     void setYearReleased(int y) {yearReleased = y;}
 
     string getScreenWriter() const {return screenWriter;}
-    void setScreenWiter(string s) {screenWriter = s;}
+    void setScreenWriter(string s) {screenWriter = s;}
 
     // print() method which prints the object data
     void print() {
@@ -33,14 +33,17 @@ public:
 };
 
 int main() {
-    vector<string> movie;
+    vector<Movie> movie;
     ifstream fin;
     fin.open("input.txt");
-    if (fin.good())
+
+    if (fin.good()) {
         cout << "Works well!" << endl;
+        getline(fin, movie);
+        fin.close();
+    }
     else {
         cout << "File not found." << endl;
         return 1;
     }
     return 0;
-}
