@@ -33,17 +33,26 @@ public:
 };
 
 int main() {
+    const int SIZE = 12;
     vector<Movie> movie;
     ifstream fin;
     fin.open("input.txt");
 
     if (fin.good()) {
         cout << "Works well!" << endl;
-        getline(fin, movie);
+        for (int i = 0; i < SIZE; i++)
+            getline(fin, movie[i]);
         fin.close();
     }
     else {
         cout << "File not found." << endl;
         return 1;
     }
+
+    Movie m;
+    m.setTitle();
+    m.setYearReleased();
+    m.setScreenWriter();
+    m.print();
     return 0;
+}
