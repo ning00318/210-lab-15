@@ -33,15 +33,33 @@ public:
 };
 
 int main() {
-    const int SIZE = 12;
-    vector<Movie> movie;
+    const int SIZE = 4;
+    vector<Movie> movie(SIZE);
     ifstream fin;
     fin.open("input.txt");
 
     if (fin.good()) {
         cout << "Works well!" << endl;
-        for (int i = 0; i < SIZE; i++)
-            getline(fin, movie[i]);
+
+        string title, screenWriter;
+        int yearReleased;
+
+        Movie m;
+
+        for (int i = 0; i < SIZE; i++) {
+            getline(fin, title);
+            m.setTitle(title);
+            m.print();
+
+            getline(fin, yearReleased);
+            m.setYearReleased(yearReleased);
+            m.print();
+
+            getline(fin, screenWriter);
+            m.setScreenWriter(screenWriter);
+            m.print();
+        }
+        
         fin.close();
     }
     else {
@@ -49,10 +67,5 @@ int main() {
         return 1;
     }
 
-    Movie m;
-    m.setTitle();
-    m.setYearReleased();
-    m.setScreenWriter();
-    m.print();
     return 0;
 }
