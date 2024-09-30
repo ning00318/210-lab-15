@@ -34,28 +34,31 @@ public:
 };
 
 int main() {
-    const int SIZE = 4;
+    const int SIZE = 4;     // four records
+
     vector<Movie> movie(SIZE);
     ifstream fin;
-    fin.open("input.txt");
+    fin.open("input.txt");      // read data from an input.txt file
 
     if (fin.good()) {
+        // read data into a temporary Movie object
         Movie tempMovie;
         string title, screenWriter, year;
         int yearReleased;
 
+        // read data for each record
         for (int i = 0; i < SIZE; i++) {
             getline(fin, title);
             tempMovie.setTitle(title);
 
             getline(fin, year);
-            yearReleased = stoi(year);
+            yearReleased = stoi(year);      // stoi() -> convert string to integer
             tempMovie.setYearReleased(yearReleased);
 
             getline(fin, screenWriter);
             tempMovie.setScreenWriter(screenWriter);
 
-            movie[i] = tempMovie;
+            movie[i] = tempMovie;   // store objects in the vector
         }
 
         fin.close();
@@ -65,8 +68,9 @@ int main() {
         return 1;
     }
 
+    // print object in the vector
     for (auto i: movie)
         i.print();
-        
+
     return 0;
 }
