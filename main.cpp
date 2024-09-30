@@ -41,7 +41,7 @@ int main() {
     if (fin.good()) {
         cout << "Works well!" << endl;
 
-        string title, screenWriter;
+        string title, screenWriter, year;
         int yearReleased;
 
         Movie m;
@@ -49,17 +49,17 @@ int main() {
         for (int i = 0; i < SIZE; i++) {
             getline(fin, title);
             m.setTitle(title);
-            m.print();
 
-            getline(fin, yearReleased);
+            getline(fin, year);
+            yearReleased = stoi(year);
             m.setYearReleased(yearReleased);
-            m.print();
 
             getline(fin, screenWriter);
             m.setScreenWriter(screenWriter);
+            
             m.print();
         }
-        
+
         fin.close();
     }
     else {
