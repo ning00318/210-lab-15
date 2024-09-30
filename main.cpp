@@ -1,4 +1,5 @@
 // COMSC-210 | Lab 15: Movie Class | Nina Tsao
+// Reference: https://www.geeksforgeeks.org/convert-string-to-int-in-cpp/
 
 #include <iostream>
 #include <vector>
@@ -39,25 +40,22 @@ int main() {
     fin.open("input.txt");
 
     if (fin.good()) {
-        cout << "Works well!" << endl;
-
+        Movie tempMovie;
         string title, screenWriter, year;
         int yearReleased;
 
-        Movie m;
-
         for (int i = 0; i < SIZE; i++) {
             getline(fin, title);
-            m.setTitle(title);
+            tempMovie.setTitle(title);
 
             getline(fin, year);
             yearReleased = stoi(year);
-            m.setYearReleased(yearReleased);
+            tempMovie.setYearReleased(yearReleased);
 
             getline(fin, screenWriter);
-            m.setScreenWriter(screenWriter);
-            
-            m.print();
+            tempMovie.setScreenWriter(screenWriter);
+
+            movie[i] = tempMovie;
         }
 
         fin.close();
@@ -67,5 +65,8 @@ int main() {
         return 1;
     }
 
+    for (auto i: movie)
+        i.print();
+        
     return 0;
 }
